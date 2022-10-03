@@ -1,0 +1,129 @@
+<div class="container app">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="text-center">{{title}}</h1>
+    </div>
+    <div class="col-sm-4">
+      <div class="alert alert-success alert-dismissable" *ngIf="msg">
+        <a href="#" class="close" (click)="closeAlert()">
+          &times;
+        </a>
+        {{msg}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="img\logouac.png" alt="logouac">
+    </div>
+    <div class="col-sm-8">
+      <h2> Crear Mensaje: </h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="nombre" class="control-label col-sm-2">
+            Nombre
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="model.nombre" placeholder="Ingresa el nombre del estudiante">
+          </div>
+        </div>
+        <!-- grado -->
+        <div class="form-group">
+          <label for="grado" class="control-label col-sm-2">
+            Grado
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="grado" name="grado" [(ngModel)]="model.grado" placeholder="Ingresa el grado y sección">
+          </div>
+        </div>
+        <!-- mensaje -->
+        <div class="form-group">
+          <label for="texto" class="control-label col-sm-2">
+            Mensaje
+          </label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="texto" rows="3" name="texto" [(ngModel)]="model.texto" placeholder="Ingresa el mensaje"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success" (click)=" addMensaje()">Guardar</button>
+  
+          </div>
+  
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-sm-8">
+      <h2>Tabla de mensajes</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Grado</th>
+            <th>Mensaje</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor= "let mensaje of mensajes; let i=index" >
+            <td>{{mensaje.nombre}}</td>
+            <td>{{mensaje.grado}}</td>
+            <td>{{mensaje.texto}}</td>
+            <td>
+              <a (click)="editarMensaje(i)" class="btn btn-success">
+                Editar
+              </a>
+              <a (click)="deleteMensaje(i)" class="btn btn-danger">
+                Eliminar
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4" [hidden]=hideUpdate>
+      <h2> Editar Mensaje: </h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="nombre" class="control-label col-sm-2">
+            Nombre
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="model2.nombre" placeholder="Ingresa el nombre del estudiante">
+          </div>
+        </div>
+        <!-- grado -->
+        <div class="form-group">
+          <label for="grado" class="control-label col-sm-2">
+            Grado
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="grado" name="grado" [(ngModel)]="model2.grado" placeholder="Ingresa el grado y sección">
+          </div>
+        </div>
+        <!-- mensaje -->
+        <div class="form-group">
+          <label for="texto" class="control-label col-sm-2">
+            Mensaje
+          </label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="texto" rows="3" name="texto" [(ngModel)]="model2.texto" placeholder="Ingresa el mensaje"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success" (click)=" updateMensaje()">Guardar</button>
+  
+          </div>
+  
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
