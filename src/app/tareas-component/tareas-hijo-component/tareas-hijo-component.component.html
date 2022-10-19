@@ -1,0 +1,65 @@
+<div class="row ">
+    <div class="col-sm-8">
+
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th>Tarea</th>
+            <th>Grado</th>
+            <th>Archivo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{mensaje.tarea}}</td>
+            <td>{{mensaje.grado}}</td>
+            <td>{{mensaje.archivo}}</td>
+            <td>
+              <a (click)="editarMensaje(i)" class="btn btn-success">
+                Editar
+              </a>
+              <a (click)="deleteMensaje(i)" class="btn btn-danger">
+                Eliminar
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4" [hidden]=hideUpdate>
+      <h2> Editar Mensaje: </h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="tarea" class="control-label col-sm-2">
+            Tarea
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="tarea" name="tarea" [(ngModel)]="model2.tarea" placeholder="Ingresa el nombre del estudiante">
+          </div>
+        </div>
+        <!-- grado -->
+        <div class="form-group">
+          <label for="grado" class="control-label col-sm-2">
+            Grado
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="grado" name="grado" [(ngModel)]="model2.grado" placeholder="Ingresa el grado y sección">
+          </div>
+        </div>
+        <!-- mensaje -->
+        <div class="form-group ">
+          <label for="archivo">Adjuntar un archivo</label>
+          <input type="file" id="archivo" name="archivo" [(ngModel)]="model2.archivo">
+          <p class="help-block">Seleccione el archivo PDF</p>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success" (click)=" updateMensaje()">Guardar</button>
+  
+          </div>
+  
+        </div>
+      </form>
+    </div>
+  </div>

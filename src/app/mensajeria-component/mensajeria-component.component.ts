@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicioGuardarService } from '../servicio-guardar.service';
 
 @Component({
   selector: 'app-mensajeria-component',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MensajeriaComponentComponent implements OnInit {
   title:string = 'Envio de Mensajes';
+  constructor(private servGuardar: ServicioGuardarService) { }
   mensajes = [
     {'nombre': 'Juan Alberto', 'grado': '3ro A', 'texto':'se porta mal en clase'},
     {'nombre': 'Ramiro Alvaro', 'grado': '2do B', 'texto':'Buen trabajo'},
@@ -18,6 +20,7 @@ export class MensajeriaComponentComponent implements OnInit {
   msg:string='';
   hideUpdate:boolean = true;
   addMensaje():void{
+    this.servGuardar.muestraMensaje("Nombre del alumno: "+ this.model.nombre + "  Del grado: " + this.model.grado)
     this.mensajes.push(this.model)
     this.model = {};
     this.msg = 'Datos agregados con éxito';
@@ -36,21 +39,15 @@ export class MensajeriaComponentComponent implements OnInit {
     this.myValue = i;
   }
   updateMensaje():void{
-    // let i =this.myValue;
-    // for(let j=0; j<this.mensajes.length; j++){
-    //   if (i==j){
         this.mensajes[this.myValue] = this.model2
         this.model2 = {};
         this.msg = 'Corregido de manera exitosa'
-    //   }
-    // }
-    // console.log(this.model2)
     this.hideUpdate = true;
   }
   closeAlert(){
     this.msg = '';
   }
-  constructor() { }
+
 
   ngOnInit(): void {
   }

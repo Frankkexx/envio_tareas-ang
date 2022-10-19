@@ -8,10 +8,12 @@ import { PrincipalComponentComponent } from './principal-component/principal-com
 import { MensajeriaComponentComponent } from './mensajeria-component/mensajeria-component.component';
 import { TareasComponentComponent } from './tareas-component/tareas-component.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ServicioGuardarService } from './servicio-guardar.service';
+import { TareasHijoComponentComponent } from './tareas-component/tareas-hijo-component/tareas-hijo-component.component';
 
 const appRoutes:Routes=[
 
-  {path:'', component:PrincipalComponentComponent},
+  {path:'principal', component:PrincipalComponentComponent},
   {path:'mensajeria', component:MensajeriaComponentComponent},
   {path:'tareas', component: TareasComponentComponent}
 ]
@@ -21,7 +23,8 @@ const appRoutes:Routes=[
     AppComponent,
     PrincipalComponentComponent,
     MensajeriaComponentComponent,
-    TareasComponentComponent
+    TareasComponentComponent,
+    TareasHijoComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ const appRoutes:Routes=[
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ServicioGuardarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

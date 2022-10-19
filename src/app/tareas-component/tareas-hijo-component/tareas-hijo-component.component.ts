@@ -1,22 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { ServicioGuardarService } from '../servicio-guardar.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ServicioGuardarService } from 'src/app/servicio-guardar.service';
 
 @Component({
-  selector: 'app-tareas-component',
-  templateUrl: './tareas-component.component.html',
-  styleUrls: ['./tareas-component.component.css']
+  selector: 'app-tareas-hijo-component',
+  templateUrl: './tareas-hijo-component.component.html',
+  styleUrls: ['./tareas-hijo-component.component.css']
 })
-export class TareasComponentComponent implements OnInit {
-  title:string = 'NUEVA TAREA';
+export class TareasHijoComponentComponent implements OnInit {
+
+  @Input() mensaje: any;
+
+  @Input() i: any;
+  actividad: any;
 
   constructor(private servGuardar:ServicioGuardarService){}
-
-  actividad = [
-    {'tarea': 'Actividad 1 - Dias de la semana', 'grado': '3ro A', 'archivo':File},
-    {'tarea': 'Actividad 2 - las mañanitas', 'grado': '2do B','archivo':File },
-    {'tarea': 'Actividad 1 - Verbos', 'grado': '1ro A', 'archivo':File},
-    {'tarea': 'Actividad 4 - Saltamontes', 'grado': '1ro B', 'archivo':File}
-  ];
   model:any = {};
   model2:any={};
   msg:string='';
@@ -49,6 +46,7 @@ export class TareasComponentComponent implements OnInit {
   closeAlert(){
     this.msg = '';
   }
+
   ngOnInit(): void {
   }
 
