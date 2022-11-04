@@ -10,12 +10,14 @@ import { TareasComponentComponent } from './tareas-component/tareas-component.co
 import { RouterModule, Routes } from '@angular/router';
 import { ServicioGuardarService } from './servicio-guardar.service';
 import { TareasHijoComponentComponent } from './tareas-component/tareas-hijo-component/tareas-hijo-component.component';
+import { EncuentaComponentComponent, EncuestaApp } from './encuenta-component/encuenta-component.component';
 
 const appRoutes:Routes=[
 
   {path:'principal', component:PrincipalComponentComponent},
   {path:'mensajeria', component:MensajeriaComponentComponent},
-  {path:'tareas', component: TareasComponentComponent}
+  {path:'tareas', component: TareasComponentComponent},
+  {path:'encuestas', component:EncuentaComponentComponent}
 ]
 
 @NgModule({
@@ -24,7 +26,8 @@ const appRoutes:Routes=[
     PrincipalComponentComponent,
     MensajeriaComponentComponent,
     TareasComponentComponent,
-    TareasHijoComponentComponent
+    TareasHijoComponentComponent,
+    // EncuestaApp
   ],
   imports: [
     BrowserModule,
